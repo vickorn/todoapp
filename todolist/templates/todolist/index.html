@@ -4,34 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'todolist/css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'todolist/css/styles.css' %}">
     <title>To do List</title>
 </head>
 <body>
     <div id='content'>
-        <div id='content-header'><h1>To do List</h1></div>
+        <h1>To do List</h1>
     
         <!-- Aquí debe ir formulario y lista (Todo el contenido)-->
-        <div id='content-body'>
-            <div class='section'>
-                <form class='content-forms'>
-                    <label>¿Something to do?</label>
-                    <input id='form-input'>
-                    <button>Add</button>
-                </form>
-            </div>
-            <div class='section'>
-                
-                <ul> <b>Pending</b> <hr>
-                    <li>First</li>
-                    <li>Second</li>
-                    <li>Third</li>
-                </ul>
-            </div>
 
-        </div>
+        <form class='content-forms'>
+            <label>¿Something to do?</label>
+            <input />
+            <button>Add</button>
+        </form>
+        
 
-        <div id='content-footer'>Developed by Iván Rojas</div>
+                       
+        <ul> <b>Pending</b> <hr>
+            {% for todolist in todo_items %}
+                {% if todolist.completed %}
+                <li class='lista-item lista-completado'>{{todolist.text}}</li>
+                {% else %}
+                <a href="#"><li class='lista-item'>{{todolist.text}}</li></a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        
+
+        <footer>Developed by Iván Rojas</footer>
     </div>
     
     
